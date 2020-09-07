@@ -22,10 +22,10 @@ Send requests to `/forward` with this format:
 ## Responses
 
 #### 200 - Sucess
-Sent when request is sucessful.
+Sent when request is sucessful. Sends the data from backpack.tf as a response.
 Response:
 ```
-{response_from_backpacktf}
+{data}
 ```
 #### 429 - Rate exceeded
 The API rate limit was exceeded.
