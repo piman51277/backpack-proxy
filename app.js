@@ -24,6 +24,9 @@ app.get('/forward', (req, res) => {
         res.end(JSON.stringify({ 'error': 'Invalid api key' }))
     }
 
+    //sets API key in the request.
+    req.query.params.key = process.env.BPAPIKEY;
+
     //sets lastRequest
     lastRequest = unixTime();
 
