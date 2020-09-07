@@ -21,7 +21,7 @@ app.get('/forward', (req, res) => {
     //Checks to see if the API key is valid.
     if (req.query.apikey != process.env.APIKEY) {
         res.status(403)
-        res.end(JSON.stringify({ 'error': 'Invalid api key' }))
+        res.end(JSON.stringify({ 'error': 'invalid api key' }))
     }
 
     //sets API key in the request.
