@@ -1,0 +1,20 @@
+{
+    "name": "backpack-proxy",
+    "description": "A small proxying server to reduce load on the main pricing server",
+    "author": "piman51277",
+    "version": "1.0.0",
+    "private": true,
+    "homepage": "",
+    "dependencies": {
+        "express": "^4.17.1",
+        "axios": "^0.20.0",
+        "tf2-sku": "^1.14"
+    },
+    "engines": {
+        "node": "12.18.x"
+    },
+    "scripts": {
+        "start": "node app.js"
+    },
+    "license": ""
+}
