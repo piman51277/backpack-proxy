@@ -14,14 +14,12 @@ if (!process.env.APIKEY) throw ('Missing API Key.')
 app.get('/forward', (req, res) => {
     //global rate limit
     if (unixTime() <= lastRequest) {
-        res.status(429);
-        res.end(JSON.stringify({ 'error': 'rate exceeded' }))
+        res.status(429).send(JSON.stringify({ 'error': 'rate exceeded' }))
     }
 
     //Checks to see if the API key is valid.
     if (req.query.apikey != process.env.APIKEY) {
-        res.status(403)
-        res.end(JSON.stringify({ 'error': 'invalid api key' }))
+        res.status(403).send(JSON.stringify({ 'error': 'invalid api key' }))
     }
 
     //sets API key in the request.
@@ -34,11 +32,9 @@ app.get('/forward', (req, res) => {
     axios.get('https://backpack.tf/api/classifieds/search/v1', {
         'params': req.query.params
     }).then((rsp) => {
-        res.status(200);
-        res.end(JSON.stringify(rsp));
+        res.status(200).send(JSON.stringify(rsp));
     }).catch((err) => {
-        res.status(400);
-        res.end(JSON.stringify({ 'error': err }))
+        res.status(400).send(JSON.stringify({ 'error': err }))
     })
 })
 
