@@ -28,6 +28,7 @@ app.get('/forward', (req, res) => {
     //sets lastRequest
     lastRequest = unixTime();
 
+    console.log(req.query.params.key)
     //sends request
     axios.get('https://backpack.tf/api/classifieds/search/v1', {
         'params': req.query.params
