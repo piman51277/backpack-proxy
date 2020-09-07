@@ -23,8 +23,10 @@ app.get('/forward', (req, res) => {
     }
 
     //sets API key in the request.
-    let cdata = Object.assign(req.query.params,{'key':process.env.BPAPIKEY});
-
+    let cdata ={
+        ...req.query.params,
+        ...{'key':process.env.BPAPIKEY}
+}
     
     
     console.log(cdata);
