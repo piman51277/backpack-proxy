@@ -36,7 +36,7 @@ app.get('/forward', (req, res) => {
     axios.get('https://backpack.tf/api/classifieds/search/v1', {
         'params': cdata
     }).then((rsp) => {
-        res.status(200).send(JSON.stringify(rsp));
+        res.status(200).send(JSON.stringify(rsp.data));
     }).catch((err) => {
         console.log(`ERROR ${err}`)
         res.status(201).send(JSON.stringify({ 'error': err }))
