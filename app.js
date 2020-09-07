@@ -42,6 +42,4 @@ app.get('/forward', (req, res) => {
     })
 })
 
-app.listen(process.env.PORT || 8000, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-  })
+app.listen(process.env.PORT || 8000, () => {})
