@@ -25,10 +25,11 @@ app.get('/forward', (req, res) => {
     //sets API key in the request.
     req.query.params.key = process.env.BPAPIKEY;
 
+    
+    
+    console.log(req.query.params);
     //sets lastRequest
     lastRequest = unixTime();
-
-    console.log(process.env.BPAPIKEY)
     //sends request
     axios.get('https://backpack.tf/api/classifieds/search/v1', {
         'params': req.query.params
