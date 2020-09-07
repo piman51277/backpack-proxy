@@ -38,6 +38,7 @@ app.get('/forward', (req, res) => {
     }).then((rsp) => {
         res.status(200).send(JSON.stringify(rsp));
     }).catch((err) => {
+        console.log(`ERROR ${err}`)
         res.status(201).send(JSON.stringify({ 'error': err }))
     })
 })
