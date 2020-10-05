@@ -6,7 +6,6 @@ Proxies requests to the backpack.tf listings API.
 - APIKEY - The API key identifying the pricing server.
 
 ## Requests
-Note: This server implements a global rate limit of 1 request/second.
 Send requests to `/forward` with this format:
 ```
 {
@@ -26,13 +25,6 @@ Sent when request is sucessful. Sends the data from backpack.tf as a response.
 Response:
 ```
 {data}
-```
-#### 429 - Rate exceeded
-The API rate limit was exceeded.
-```
-{
-error:'rate exceeded'
-}
 ```
 #### 403 - Invalid API Key
 The API key sent with the request was incorrect
