@@ -40,4 +40,4 @@ setInterval(()=>{
         queue[0]();
         queue.shift();
     }
-},1010)
+},530)
