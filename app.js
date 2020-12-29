@@ -15,29 +15,32 @@ app.get('/forward', (req, res) => {
         res.status(403).send(JSON.stringify({ 'error': 'invalid api key' }))
     }
 
-    queue.push(()=>{
-    //sets API key in the request.
-    let cdata ={
-        ...JSON.parse(req.query.params),
-        ...{'key':process.env.BPAPIKEY}
-}
-    //sends request
-    axios.get('https://backpack.tf/api/classifieds/search/v1', {
-        'params': cdata
-    }).then((rsp) => {
-        res.status(200).send(JSON.stringify(rsp.data));
-    }).catch((err) => {
-        console.log(`ERROR ${err}`)
-        res.status(400).send(JSON.stringify({ 'error': err.message }))
+    queue.push(() => {
+        //sets API key in the request.
+        let cdata = {
+                ...JSON.parse(req.query.params),
+                ... { 'key': process.env.BPAPIKEY }
+            }
+            //sends request
+        axios.get('https://backpack.tf/api/classifieds/search/v1', {
+            'params': cdata
+        }).then((rsp) => {
+            res.status(200).send(JSON.stringify(rsp.data));
+        }).catch((err) => {
+            console.log(`ERROR ${err}`)
+            res.status(400).send(JSON.stringify({ 'error': err.message }))
+        })
     })
-    })
+})
+app.get('/status', (req, res) => {
+    res.status(200).send('Request')
 })
 
 app.listen(process.env.PORT || 8000, () => {})
 
-setInterval(()=>{
-    if(queue[0] != undefined){
+setInterval(() => {
+    if (queue[0] != undefined) {
         queue[0]();
         queue.shift();
     }
-},530)
+}, 530)
